@@ -17,3 +17,6 @@ npx prisma generate
 npm run start
 
 ```
+
+# API Documentation
+Link: https://documenter.getpostman.com/view/35157893/2sAXjSxoBD
