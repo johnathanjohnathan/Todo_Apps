@@ -17,6 +17,8 @@ const get = async (req, res, next) => {
   try {
     const user = req.user;
 
+    console.log(user, "Ini userrrrrrrrrrrrrrrrrrrrrrrrr");
+
     const result = await taskService.get(user);
     res.status(200).json({
       data: result,

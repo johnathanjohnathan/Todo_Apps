@@ -4,13 +4,13 @@ import { logger } from "../src/application/logging.js";
 import { createTestUser, removeTestUser } from "./test-util.js";
 import bcrypt from "bcrypt";
 
-describe("POST /api/users", function () {
+describe("POST /api/users/signup", function () {
   afterEach(async () => {
     await removeTestUser();
   });
 
   it("should can register new user", async () => {
-    const result = await supertest(web).post("/api/users").send({
+    const result = await supertest(web).post("/api/users/signup").send({
       username: "test",
       email: "test@example.com",
       password: "rahasia",
@@ -25,7 +25,7 @@ describe("POST /api/users", function () {
   });
 
   it("should reject if request is invalid", async () => {
-    const result = await supertest(web).post("/api/users").send({
+    const result = await supertest(web).post("/api/users/signup").send({
       username: "",
       password: "",
       name: "",
@@ -39,7 +39,7 @@ describe("POST /api/users", function () {
 
   it("should reject if username already registered", async () => {
     await createTestUser();
-    let result = await supertest(web).post("/api/users").send({
+    let result = await supertest(web).post("/api/users/signup").send({
       username: "test",
       email: "test@example.com",
       password: "rahasia",
